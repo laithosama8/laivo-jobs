@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LAIVO JOBS | فرصتك تبدأ هنا</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+font-family:Arial,Tahoma,sans-serif;
+background:#f5f7fb;color:#102536;
+}
+header{
+background:#102536;color:white;
+padding:20px 7%;
+display:flex;justify-content:space-between;
+align-items:center;flex-wrap:wrap;gap:15px;
+}
+.logo{font-size:27px;font-weight:900;letter-spacing:1px}
+.logo span{color:#ff8a24}
+nav{display:flex;gap:20px;flex-wrap:wrap}
+nav a{color:white;text-decoration:none;font-size:14px}
+button{cursor:pointer;border:0;border-radius:9px;padding:12px 20px;font-weight:bold}
+.primary{background:#ff8a24;color:#102536}
+.hero{
+padding:75px 7%;text-align:center;color:white;
+background:linear-gradient(120deg,#102536,#164b78,#246bfd);
+}
+.hero h1{font-size:36px;margin-bottom:18px}
+.hero p{font-size:17px;color:#dceaff;line-height:2}
+.search{
+background:white;padding:15px;border-radius:14px;
+max-width:950px;margin:30px auto 0;
+display:grid;grid-template-columns:2fr 1fr 1fr auto;gap:10px;
+}
+input,select{
+padding:14px;border:1px solid #dce2eb;
+border-radius:9px;width:100%;font-size:14px;
+background:white;
+}
+.section{padding:45px 7%}
+.section h2{font-size:25px;margin-bottom:25px}
+.categories{
+display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));
+gap:13px;
+}
+.category{
+background:white;padding:20px 10px;text-align:center;
+border-radius:12px;border:1px solid #e8edf3;
+cursor:pointer;transition:.2s;font-weight:bold;
+}
+.category:hover{background:#eaf1ff;border-color:#246bfd}
+.jobs{
+display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:18px;
+}
+.job{
+background:white;padding:22px;border-radius:14px;
+border:1px solid #e8edf3;transition:.2s;
+}
+.job:hover{transform:translateY(-4px);box-shadow:0 8px 25px #10253612}
+.job h3{margin:14px 0 9px}
+.company{color:#246bfd;font-weight:bold}
+.details{color:#657386;font-size:14px;line-height:2.2;margin:12px 0}
+.badge{
+display:inline-block;background:#eaf1ff;color:#246bfd;
+padding:6px 10px;border-radius:20px;font-size:12px;
+}
+.apply{background:#102536;color:white;width:100%;margin-top:12px}
+.apply:hover{background:#246bfd}
+.stats{
+background:#102536;color:white;display:grid;
+grid-template-columns:repeat(4,1fr);
+text-align:center;padding:35px 7%;gap:20px;
+}
+.stats strong{font-size:27px;color:#ff8a24}
+.stats p{margin-top:9px;color:#d5dfeb}
+.empty{text-align:center;padding:35px;color:#657386;display:none}
+footer{
+background:#091a29;color:white;padding:35px 7%;
+text-align:center;line-height:2.5;
+}
+footer span{color:#ff8a24}
+@media(max-width:700px){
+header{padding:18px 5%}
+.hero{padding:55px 5%}
+.hero h1{font-size:27px}
+.search{grid-template-columns:1fr}
+.section{padding:35px 5%}
+.stats{grid-template-columns:repeat(2,1fr)}
+nav{gap:12px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="logo">LAIVO <span>JOBS</span></div>
+<nav>
+<a href="#">الرئيسية</a>
+<a href="#jobs">الوظائف</a>
+<a href="#categories">التخصصات</a>
+<a href="#companies">الشركات</a>
+</nav>
+<button class="primary" onclick="alert('قريباً: نظام تسجيل الشركات')">انشر وظيفة</button>
+</header>
+
+<section class="hero">
+<h1>مستقبلك المهني يبدأ من هنا</h1>
+<p>اكتشف آلاف الفرص الوظيفية في العراق<br>
+واربط طموحك بأفضل الشركات والمؤسسات.</p>
+
+<div class="search">
+<input id="keyword" placeholder="ابحث عن وظيفة أو مهارة">
+<select id="location">
+<option value="">جميع المحافظات</option>
+<option>بغداد</option><option>البصرة</option>
+<option>نينوى</option><option>أربيل</option>
+<option>النجف</option><option>كربلاء</option>
+<option>الأنبار</option><option>بابل</option>
+<option>ديالى</option><option>كركوك</option>
+<option>صلاح الدين</option><option>واسط</option>
+<option>ذي قار</option><option>ميسان</option>
+<option>المثنى</option><option>القادسية</option>
+<option>دهوك</option><option>السليمانية</option>
+</select>
+<select id="type">
+<option value="">نوع الوظيفة</option>
+<option>دوام كامل</option>
+<option>دوام جزئي</option>
+<option>عن بُعد</option>
+<option>تدريب</option>
+</select>
+<button class="primary" onclick="searchJobs()">ابحث الآن</button>
+</div>
+</section>
+
+<section class="section" id="categories">
+<h2>استكشف التخصصات</h2>
+<div class="categories">
+<div class="category" onclick="filterCategory('طب')">🏥 الطب والصحة</div>
+<div class="category" onclick="filterCategory('هندسة')">🏗️ الهندسة</div>
+<div class="category" onclick="filterCategory('برمجة')">💻 التكنولوجيا</div>
+<div class="category" onclick="filterCategory('إدارة')">📊 إدارة الأعمال</div>
+<div class="category" onclick="filterCategory('محاسبة')">💰 المحاسبة</div>
+<div class="category" onclick="filterCategory('تسويق')">📢 التسويق</div>
+<div class="category" onclick="filterCategory('تصميم')">🎨 التصميم</div>
+<div class="category" onclick="filterCategory('قانون')">⚖️ القانون</div>
+<div class="category" onclick="filterCategory('تعليم')">📚 التعليم</div>
+<div class="category" onclick="filterCategory('مبيعات')">🤝 المبيعات</div>
+<div class="category" onclick="filterCategory('إعلام')">🎥 الإعلام</div>
+<div class="category" onclick="filterCategory('نفط')">🛢️ النفط والطاقة</div>
+</div>
+</section>
+
+<section class="stats">
+<div><strong>18</strong><p>محافظة عراقية</p></div>
+<div><strong>12+</strong><p>تخصص وظيفي</p></div>
+<div><strong>24/7</strong><p>البحث عن الوظائف</p></div>
+<div><strong>100%</strong><p>طموح عراقي</p></div>
+</section>
+
+<section class="section" id="jobs">
+<h2>أحدث الفرص الوظيفية</h2>
+<div class="jobs" id="jobList">
+
+<div class="job" data-category="برمجة" data-location="بغداد" data-type="دوام كامل">
+<span class="badge">دوام كامل</span>
+<h3>مطور مواقع إلكترونية</h3>
+<p class="company">شركة تقنية عراقية</p>
+<div class="details">📍 بغداد<br>💼 تكنولوجيا المعلومات<br>🎓 خبرة سنة واحدة</div>
+<button class="apply" onclick="applyJob('مطور مواقع إلكترونية')">التقديم للوظيفة</button>
+</div>
+
+<div class="job" data-category="تسويق" data-location="البصرة" data-type="دوام كامل">
+<span class="badge">دوام كامل</span>
+<h3>مسؤول تسويق رقمي</h3>
+<p class="company">شركة تسويق وإعلان</p>
+<div class="details">📍 البصرة<br>💼 التسويق والإعلان<br>🎓 خبرة سنتين</div>
+<button class="apply" onclick="applyJob('مسؤول تسويق رقمي')">التقديم للوظيفة</button>
+</div>
+
+<div class="job" data-category="هندسة" data-location="أربيل" data-type="دوام كامل">
+<span class="badge">دوام كامل</span>
+<h3>مهندس مدني</h3>
+<p class="company">شركة مقاولات</p>
+<div class="details">📍 أربيل<br>💼 الهندسة المدنية<br>🎓 خبرة 3 سنوات</div>
+<button class="apply" onclick="applyJob('مهندس مدني')">التقديم للوظيفة</button>
+</div>
+
+<div class="job" data-category="محاسبة" data-location="بغداد" data-type="دوام جزئي">
+<span class="badge">دوام جزئي</span>
+<h3>محاسب مالي</h3>
+<p class="company">مؤسسة تجارية</p>
+<div class="details">📍 بغداد<br>💼 المحاسبة والمالية<br>🎓 خبرة سنة</div>
+<button class="apply" onclick="applyJob('محاسب مالي')">التقديم للوظيفة</button>
+</div>
+
+<div class="job" data-category="تصميم" data-location="النجف" data-type="عن بُعد">
+<span class="badge">عن بُعد</span>
+<h3>مصمم جرافيك</h3>
+<p class="company">وكالة إبداعية</p>
+<div class="details">📍 النجف<br>💼 التصميم والجرافيك<br>🎓 معرض أعمال مطلوب</div>
+<button class="apply" onclick="applyJob('مصمم جرافيك')">التقديم للوظيفة</button>
+</div>
+
+<div class="job" data-category="إدارة" data-location="البصرة" data-type="تدريب">
+<span class="badge">تدريب</span>
+<h3>متدرب إدارة أعمال</h3>
+<p class="company">شركة خدمات إدارية</p>
+<div class="details">📍 البصرة<br>💼 إدارة الأعمال<br>🎓 طلبة وخريجون</div>
+<button class="apply" onclick="applyJob('متدرب إدارة أعمال')">التقديم للوظيفة</button>
+</div>
+
+</div>
+<div class="empty" id="empty">لا توجد وظائف مطابقة لبحثك.</div>
+</section>
+
+<section class="section" id="companies">
+<h2>هل تمتلك شركة؟</h2>
+<div class="job">
+<h3>انضم إلى LAIVO JOBS</h3>
+<p class="details">اعرض فرصك الوظيفية أمام الباحثين عن العمل في جميع أنحاء العراق.</p>
+<button class="primary" onclick="alert('قريباً: تسجيل الشركات')">سجل شركتك الآن</button>
+</div>
+</section>
+
+<footer>
+<div class="logo">LAIVO <span>JOBS</span></div>
+<p>منصة عراقية تجمع المواهب بالفرص.</p>
+<p>© 2026 LAIVO JOBS - جميع الحقوق محفوظة</p>
+</footer>
+
+<script>
+function searchJobs(){
+const keyword=document.getElementById('keyword').value.trim().toLowerCase();
+const location=document.getElementById('location').value;
+const type=document.getElementById('type').value;
+let count=0;
+
+document.querySelectorAll('.job[data-category]').forEach(job=>{
+const text=job.innerText.toLowerCase();
+const match=(!keyword||text.includes(keyword))&&
+(!location||job.dataset.location===location)&&
+(!type||job.dataset.type===type);
+job.style.display=match?'block':'none';
+if(match)count++;
+});
+document.getElementById('empty').style.display=count?'none':'block';
+}
+
+function filterCategory(category){
+document.getElementById('keyword').value=category;
+searchJobs();
+document.getElementById('jobs').scrollIntoView({behavior:'smooth'});
+}
+
+function applyJob(title){
+alert('شكراً لاهتمامك بوظيفة: '+title+'\nسيتم تفعيل نظام التقديم الحقيقي قريباً.');
+}
+</script>
+
+</body>
+</html>
